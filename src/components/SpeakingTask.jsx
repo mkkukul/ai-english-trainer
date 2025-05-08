@@ -60,15 +60,15 @@ function SpeakingTask({ task }) {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">🗣️ Speaking Task</h2>
-      <p className="text-xl mb-6">{task}</p>
+    <div className="p-8 bg-white rounded-lg shadow-md w-full max-w-3xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6 text-center">🗣️ Speaking Task</h2>
+      <p className="text-xl mb-8 text-center">{task}</p>
 
-      <div className="space-y-4">
+      <div className="max-w-2xl mx-auto space-y-6">
         <button
           onClick={startRecording}
           disabled={isRecording}
-          className={`w-full py-3 rounded-lg ${
+          className={`w-full py-4 rounded-full transition-all duration-300 transform hover:scale-105 ${
             isRecording
               ? 'bg-red-500 text-white'
               : 'bg-blue-500 text-white hover:bg-blue-600'
@@ -78,16 +78,16 @@ function SpeakingTask({ task }) {
         </button>
 
         {transcript && (
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold mb-2">Your speech:</h3>
-            <p className="text-gray-700">{transcript}</p>
+          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2 text-center">Your speech:</h3>
+            <p className="text-gray-700 text-center">{transcript}</p>
           </div>
         )}
 
         {feedback && (
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold mb-2">Feedback:</h3>
-            <p className="text-gray-700">{feedback}</p>
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2 text-center">Feedback:</h3>
+            <p className="text-gray-700 text-center">{feedback}</p>
           </div>
         )}
       </div>
