@@ -1,67 +1,78 @@
 import { useState } from 'react';
+import { RotateCcw, Volume2, CheckCircle } from 'lucide-react';
 
-function Flashcard({ flashcards, onComplete }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+function Flashcard({ word, example, onComplete }) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
 
-  const handleNext = () => {
-    if (currentIndex < flashcards.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-      setIsFlipped(false);
-    } else {
-      onComplete();
-    }
+  const handleComplete = () => {
+    setIsCompleted(true);
+    onComplete();
+  };
+
+  const speak = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    speechSynthesis.speak(utterance);
   };
 
   return (
-    <div className="p-8 bg-white rounded-lg shadow-md w-full max-w-3xl mx-auto text-center">
-      <div className="mb-6">
-        <div className="flex justify-center items-center space-x-4">
-          <h2 className="text-2xl font-bold">Flashcard {currentIndex + 1}/{flashcards.length}</h2>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-2 mt-4">
-          <div
-            className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${((currentIndex + 1) / flashcards.length) * 100}%` }}
-          ></div>
-        </div>
+    <div className="card">
+      <div className="mb-6 flex justify-between items-center">
+        <h2 className="text-2xl font-bold">Flashcard</h2>
+        <button
+          onClick={() => setIsFlipped(!isFlipped)}
+          className="btn-secondary"
+        >
+          <RotateCcw className="w-5 h-5 mr-2" />
+          Flip Card
+        </button>
       </div>
 
       <div
-        className="relative w-full max-w-2xl mx-auto h-64 cursor-pointer perspective-1000"
-        onClick={() => setIsFlipped(!isFlipped)}
+        className={`relative w-full max-w-2xl mx-auto aspect-[4/3] transition-transform duration-500 transform perspective-1000 ${
+          isFlipped ? 'rotate-y-180' : ''
+        }`}
       >
-        <div
-          className={`absolute w-full h-full transition-transform duration-500 transform-style-3d ${
-            isFlipped ? 'rotate-y-180' : ''
-          }`}
-        >
-          <div className="absolute w-full h-full backface-hidden bg-blue-50 rounded-xl p-8 flex items-center justify-center">
-            <p className="text-3xl font-bold text-blue-600">{flashcards[currentIndex].word}</p>
+        <div className="absolute w-full h-full backface-hidden">
+          <div className="card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <button
+              onClick={() => speak(word)}
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/50 transition-colors"
+            >
+              <Volume2 className="w-6 h-6 text-blue-500" />
+            </button>
+            <h3 className="text-4xl font-bold text-center mb-4">{word}</h3>
+            <p className="text-gray-600 text-center">Click the speaker icon to hear pronunciation</p>
           </div>
-          <div className="absolute w-full h-full backface-hidden bg-green-50 rounded-xl p-8 flex items-center justify-center rotate-y-180">
-            <div className="text-center">
-              <p className="text-2xl font-bold text-green-600 mb-4">{flashcards[currentIndex].meaning}</p>
-              <p className="text-lg text-gray-600 italic">{flashcards[currentIndex].example}</p>
-            </div>
+        </div>
+
+        <div className="absolute w-full h-full backface-hidden rotate-y-180">
+          <div className="card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-50 to-purple-50">
+            <h3 className="text-2xl font-bold text-center mb-4">Example Usage</h3>
+            <p className="text-xl text-center mb-8">{example}</p>
+            <button
+              onClick={() => speak(example)}
+              className="btn-secondary"
+            >
+              <Volume2 className="w-5 h-5 mr-2" />
+              Listen to Example
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="mt-8 flex justify-center space-x-4">
-        <button
-          onClick={() => setIsFlipped(!isFlipped)}
-          className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transform hover:scale-105 transition-all duration-300"
-        >
-          {isFlipped ? 'Show Word' : 'Show Meaning'}
-        </button>
-        <button
-          onClick={handleNext}
-          className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transform hover:scale-105 transition-all duration-300"
-        >
-          {currentIndex < flashcards.length - 1 ? 'Next Card →' : 'Complete 🎯'}
-        </button>
-      </div>
+      {!isCompleted && (
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={handleComplete}
+            className="btn-primary"
+          >
+            <CheckCircle className="w-5 h-5 mr-2" />
+            I've Learned This Word
+          </button>
+        </div>
+      )}
     </div>
   );
 }
