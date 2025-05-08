@@ -63,9 +63,9 @@ function Quiz({ questions, onComplete }) {
   }
 
   return (
-    <div className="p-8 bg-white rounded-lg shadow-md w-full max-w-3xl mx-auto">
+    <div className="p-8 bg-white rounded-lg shadow-md w-full max-w-3xl mx-auto text-center">
       <div className="mb-6">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-center items-center space-x-4 mb-4">
           <h2 className="text-2xl font-bold">Question {currentQuestion + 1}/{questions.length}</h2>
           <span className="text-blue-500 font-semibold">Score: {score}</span>
         </div>
@@ -77,14 +77,14 @@ function Quiz({ questions, onComplete }) {
         </div>
       </div>
 
-      <p className="text-xl mb-8 text-center">{questions[currentQuestion].question}</p>
+      <p className="text-xl mb-8">{questions[currentQuestion].question}</p>
       
       <div className="space-y-4 max-w-2xl mx-auto">
         {questions[currentQuestion].options.map((option, index) => (
           <button
             key={index}
             onClick={() => handleAnswer(option)}
-            className={`w-full p-4 text-left rounded-lg transition-all duration-300 transform hover:scale-102 ${
+            className={`w-full p-4 text-center rounded-lg transition-all duration-300 transform hover:scale-102 ${
               selectedAnswer === option
                 ? option === questions[currentQuestion].answer
                   ? 'bg-green-500 text-white shadow-lg'
@@ -98,7 +98,7 @@ function Quiz({ questions, onComplete }) {
       </div>
 
       {selectedAnswer && (
-        <div className="mt-8 text-center">
+        <div className="mt-8">
           <button
             onClick={handleNext}
             className="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transform hover:scale-105 transition-all duration-300"
