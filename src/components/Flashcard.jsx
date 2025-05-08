@@ -15,7 +15,7 @@ function Flashcard({ cards }) {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md">
+    <div className="p-8 bg-white rounded-lg shadow-md w-full max-w-3xl mx-auto">
       <div className="flex justify-between items-center mb-6">
         <button
           onClick={handlePrevious}
@@ -35,7 +35,7 @@ function Flashcard({ cards }) {
       </div>
 
       <div
-        className="relative h-64 cursor-pointer"
+        className="relative h-64 cursor-pointer max-w-2xl mx-auto"
         onClick={() => setIsFlipped(!isFlipped)}
       >
         <div
@@ -45,7 +45,7 @@ function Flashcard({ cards }) {
           style={{ backfaceVisibility: 'hidden' }}
         >
           <div className="bg-blue-500 text-white p-6 rounded-lg h-full flex items-center justify-center">
-            <h3 className="text-2xl font-bold">{cards[currentIndex].word}</h3>
+            <h3 className="text-2xl font-bold text-center">{cards[currentIndex].word}</h3>
           </div>
         </div>
         <div
@@ -55,7 +55,7 @@ function Flashcard({ cards }) {
           style={{ backfaceVisibility: 'hidden' }}
         >
           <div className="bg-green-500 text-white p-6 rounded-lg h-full flex items-center justify-center">
-            <p className="text-xl">{cards[currentIndex].example}</p>
+            <p className="text-xl text-center">{cards[currentIndex].example}</p>
           </div>
         </div>
       </div>
