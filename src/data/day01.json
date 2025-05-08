@@ -1,0 +1,90 @@
+{
+  "day": 1,
+  "topic": "To Be Tense",
+  "summary": "We use am/is/are to describe people and things. 'Am' is used with I, 'is' is used with he/she/it, and 'are' is used with you/we/they.",
+  "quiz": [
+    {
+      "question": "I ___ a teacher.",
+      "options": ["am", "is", "are"],
+      "answer": "am"
+    },
+    {
+      "question": "He ___ happy.",
+      "options": ["am", "is", "are"],
+      "answer": "is"
+    },
+    {
+      "question": "They ___ students.",
+      "options": ["am", "is", "are"],
+      "answer": "are"
+    },
+    {
+      "question": "She ___ not at home.",
+      "options": ["am", "is", "are"],
+      "answer": "is"
+    },
+    {
+      "question": "We ___ ready.",
+      "options": ["am", "is", "are"],
+      "answer": "are"
+    },
+    {
+      "question": "The cat ___ sleeping.",
+      "options": ["am", "is", "are"],
+      "answer": "is"
+    },
+    {
+      "question": "My friends ___ at the party.",
+      "options": ["am", "is", "are"],
+      "answer": "are"
+    },
+    {
+      "question": "The weather ___ beautiful today.",
+      "options": ["am", "is", "are"],
+      "answer": "is"
+    },
+    {
+      "question": "I ___ excited about the trip.",
+      "options": ["am", "is", "are"],
+      "answer": "am"
+    },
+    {
+      "question": "The children ___ playing in the garden.",
+      "options": ["am", "is", "are"],
+      "answer": "are"
+    }
+  ],
+  "flashcards": [
+    {
+      "word": "tired",
+      "example": "I am tired today."
+    },
+    {
+      "word": "happy",
+      "example": "He is happy."
+    },
+    {
+      "word": "student",
+      "example": "They are students."
+    },
+    {
+      "word": "teacher",
+      "example": "She is a teacher."
+    },
+    {
+      "word": "ready",
+      "example": "We are ready."
+    },
+    {
+      "word": "excited",
+      "example": "I am excited about the party."
+    },
+    {
+      "word": "busy",
+      "example": "They are busy with homework."
+    }
+  ],
+  "writing": "Write 3 sentences using 'is' and 'are'. Try to make them funny!",
+  "speaking": "Ask and answer: 'Are you happy today?' and 'What makes you happy?'",
+  "motivation": "Great job! You earned +10 XP today! Keep going, you're doing amazing! 🌟"
+} 
