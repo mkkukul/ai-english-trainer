@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Trophy, CheckCircle, XCircle, ArrowRight } from 'lucide-react';
-import { shuffle } from 'lodash';
+import lodash from 'lodash';
 
 function Quiz({ questions, onComplete }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -11,7 +11,7 @@ function Quiz({ questions, onComplete }) {
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
 
   useEffect(() => {
-    setShuffledQuestions(shuffle([...questions]));
+    setShuffledQuestions(lodash.shuffle([...questions]));
   }, [questions]);
 
   const handleAnswer = (answer) => {
@@ -74,7 +74,7 @@ function Quiz({ questions, onComplete }) {
             setScore(0);
             setShowResult(false);
             setSelectedAnswer('');
-            setShuffledQuestions(shuffle([...questions]));
+            setShuffledQuestions(lodash.shuffle([...questions]));
           }}
           className="btn-primary"
         >
